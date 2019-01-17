@@ -1,4 +1,3 @@
 # board
 ---
-express + react 
-simple board app
+make simple board app  (express + react)
