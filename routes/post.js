@@ -17,7 +17,7 @@ router.get('/postlist' , async (req, res) => {
 //title click => content
 router.get('/content/:id' , async (req, res) => {
     try{
-        const content = await Post.findByPk({ where : req.params.id });
+        const content = await Post.findOne({ where : req.params.id });
         return res.send(content)
     } catch(error) {
         return res.send(error);
@@ -46,7 +46,14 @@ router.post('/post' , async (req, res) => {
     }      
 })
 
-router.delete('/')
+router.delete('/:id' , async (req, res) => {
+    try {
+        await Post.destroy({ where : req.params.id})
+        return res.send('삭제되었습니다.')
+    } catch(error) {
+        return res.send(error);
+    }
+})
 
 
 
