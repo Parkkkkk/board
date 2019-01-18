@@ -32,7 +32,7 @@ router.post('/login' , async (req, res) => {
         if(user) {
             const PW = await bcrypt.compare(password , user.password);
             if(PW) {
-                return res.json({ email , nick })
+                return res.json({ email : user.email , nick : user.nick })
             } else {
                 return res.send('비밀번호가 일치하지 않습니다.');
             }
@@ -44,8 +44,6 @@ router.post('/login' , async (req, res) => {
         res.send(error);
     }
 })
-
-
 
 
 module.exports = router

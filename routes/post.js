@@ -15,9 +15,13 @@ router.get('/postlist' , async (req, res) => {
 
 
 //title click => content
-router.get('/content/:id' , async (req, res) => {
+router.get('/click/:id' , async (req, res) => {
     try{
-        const content = await Post.findOne({ where : req.params.id });
+        const content = await Post.findOne({ 
+              where : { 
+                  id : req.params.id},
+                  attributes : ['title', 'content', 'img']
+                    });
         return res.send(content)
     } catch(error) {
         return res.send(error);
@@ -48,19 +52,11 @@ router.post('/post' , async (req, res) => {
 
 router.delete('/:id' , async (req, res) => {
     try {
-        await Post.destroy({ where : req.params.id})
+        await Post.destroy({ where : { id : req.params.id}});
         return res.send('삭제되었습니다.')
     } catch(error) {
         return res.send(error);
     }
 })
-
-
-
-
-
-
-
-
 
 module.exports = router

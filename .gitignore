@@ -1,3 +1,7 @@
 /*.json
 /node_modules
 /config
+
+/client/*.json
+/client/node_modules
+
