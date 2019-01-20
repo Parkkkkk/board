@@ -32,6 +32,10 @@ router.post('/login' , async (req, res) => {
         if(user) {
             const PW = await bcrypt.compare(password , user.password);
             if(PW) {
+                res.cookie('useremail' , email ,{
+                    maxAge : 60*60*1000,
+                    httpOnly : true
+                })
                 return res.json({ email : user.email , nick : user.nick })
             } else {
                 return res.send('비밀번호가 일치하지 않습니다.');
