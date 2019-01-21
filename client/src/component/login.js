@@ -25,9 +25,8 @@ class Login extends Component {
             email : this.state.email,
             password : this.state.password
         }
-        User_login(Login_info)
-        .then(res => console.log(res))
-
+        
+        User_login(Login_info) 
     }
 
 

@@ -9,7 +9,7 @@ router.post('/join' , async (req, res) => {
     try {
         const user = await User.findOne({ where : { email } })
         if(user) {
-            return res.send({ message : '이미 존재하는 유저입니다.'})   
+            return res.send({ code : 400 , message : '이미 존재하는 유저입니다.'})   
         }
         const hash = await bcrypt.hash(password , 12);
         await User.create({
@@ -17,7 +17,7 @@ router.post('/join' , async (req, res) => {
             password : hash,
             nick
         })
-        return res.send('Hi!!!!!!!!')
+        return res.send('Success')
     } catch (error) {
         console.log(error);
         return res.send(error);
@@ -36,12 +36,12 @@ router.post('/login' , async (req, res) => {
                     maxAge : 60*60*1000,
                     httpOnly : true
                 })
-                return res.json({ email : user.email , nick : user.nick })
+                return res.send({ email : user.email , nick : user.nick });
             } else {
-                return res.send('비밀번호가 일치하지 않습니다.');
+                return res.send({ code : 403 , message : '비밀번호가 일치하지 않습니다.'})
             }
         } else {
-            return res.send('존재하지 않는 유저입니다.')
+            return res.send({ code : 403 , message : '존재하지 않는 유저입니다.'})
         }
     } catch(error) {
         console.log(error);

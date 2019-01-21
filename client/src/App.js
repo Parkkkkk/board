@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from '../src/component/login'
+import Image from '../src/component/upload'
 
 class App extends Component {
   render() {
     return (
       <div className="App">    
-          <Login />
+          <Image />
       </div>
     );
   }

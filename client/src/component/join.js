@@ -27,15 +27,54 @@ class Join extends Component {
         }
 
         User_join(join_info)
-        .then(res => this.history.porps.push('/'))
-
     }
 
 
 
     render() {
         return (
-            <div></div>
+            <div className="join_form">
+                <form className="form-join" onSubmit={this.onSubmit}>
+                <div>
+                    <h2>Join Form</h2>
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input className="email"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.Change}>
+                    </input>
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input className="password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.Change}>
+                    </input>
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="nick">Nick name</label>
+                    <input className="nick"
+                    type="text"
+                    name="nick"
+                    placeholder="Nick name"
+                    value={this.state.nick}
+                    onChange={this.Change}>
+                    </input>
+                </div>
+                <button className="not yet" type="submit">Sign up</button>
+
+                </form>
+            </div>
         )
     }
 }

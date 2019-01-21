@@ -5,9 +5,15 @@ export const User_login = user => {
         method : 'POST',
         headers : { 'Content-Type' : 'application/json'},
         data : JSON.stringify(user)
+    }))
+    .then(res => {
+        if(res.data.code === 400) {
+            alert(res.data.message);
+        } else {
+            alert(`${res.data.nick}님 환영합니다.`)
+        }
     })
-    .then(res => alert(res))
-)
+
 }
 
 export const User_join = user_info => {
@@ -15,9 +21,8 @@ export const User_join = user_info => {
         method : 'POST',
         headers : { 'Content-Type' : 'application/json'},
         data : JSON.stringify(user_info)
-    })
-    .then(res => alert(res))
-)
+    }))
+    .then(res => console.log(res))
 }
 
 export const Create_post = post_info => {
@@ -30,11 +35,14 @@ export const Create_post = post_info => {
 )
 }
 
-export const Image_upload = image => {
+export const Image_upload = img => {
     return (axios('user/img' , {
         method : 'POST',
-        headers : {'Content-Type' : 'multipart/form-data'}
-    }))
+        headers : {'Content-type' : 'multipart/form-data'},
+        data : JSON.stringify(img)
+    })
+    .then(res => console.log(res))
+)
 }
 
 export const Delete_post = () => {
