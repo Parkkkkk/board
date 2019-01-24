@@ -38,8 +38,7 @@ export const Create_post = post_info => {
 export const Image_upload = img => {
     return (axios('user/img' , {
         method : 'POST',
-        headers : {'Content-type' : 'multipart/form-data'},
-        data : JSON.stringify(img)
+        data : img
     })
     .then(res => console.log(res))
 )

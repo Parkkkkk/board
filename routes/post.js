@@ -33,7 +33,7 @@ const storage = multer ({
 
 //image upload button??
 router.post('/img' , storage.single('img'), (req, res) => {
-    console.log(req.file);
+    console.log(req.body);
     return res.json({ url : `/img/${req.file.filename}`});
 })
 

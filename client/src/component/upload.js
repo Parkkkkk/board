@@ -7,25 +7,23 @@ class Image extends Component {
         this.state={
             img : ""
         }
-        this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e) {
-        this.setState({  [e.target.name] : e.target.value })
+        this.setState({ img : e.target.files[0]});
     }
-    
-    onSubmit (e) {
+   
+    onSubmit(e) {
         e.preventDefault()
 
-        var image = {
-            img : this.state.img
-        }
+        const fd = new FormData();
+        fd.append('img' , this.state.img , this.state.img.name);
+        
+        Image_upload(fd)
 
-        Image_upload(image)
-        .then(res => console.log(res))
-
-    };
+    }
 
     render() {
         return (
@@ -33,8 +31,6 @@ class Image extends Component {
                 <form className="upload" onSubmit={this.onSubmit}>
                     <input className="image" 
                     type="file"
-                    value={this.state.img}
-                    name="img"
                     onChange={this.onChange}
                     accept="image/*">
                     </input>
