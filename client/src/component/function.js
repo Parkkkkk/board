@@ -28,17 +28,16 @@ export const User_join = user_info => {
 export const Create_post = post_info => {
     return (axios('user/post', {
         method : 'POST',
-        headers : { 'Content-Type' : 'application/json'},
-        data : JSON.stringify(post_info)
+        data : post_info
     })
-    .then(res => alert(res))
+    .then(res => console.log(res))
 )
 }
 
-export const Image_upload = img => {
+export const Image_upload = fd => {
     return (axios('user/img' , {
         method : 'POST',
-        data : img
+        data : fd
     })
     .then(res => console.log(res))
 )
@@ -53,5 +52,5 @@ export const Click_list = () => {
 }
 
 export const Veiew_post = () => {
-    return (axios('user/p'))
+    return (axios('user/'))
 }

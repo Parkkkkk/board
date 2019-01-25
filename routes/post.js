@@ -31,7 +31,7 @@ const storage = multer ({
 
 
 
-//image upload button??
+//single image upload 
 router.post('/img' , storage.single('img'), (req, res) => {
     console.log(req.body);
     return res.json({ url : `/img/${req.file.filename}`});
@@ -65,7 +65,7 @@ router.get('/click/:id' , async (req, res) => {
 
 //post 
 //include image url
-router.post('/post' , storage.none(), async (req, res) => {
+router.post('/post' ,storage.none(), async (req, res) => {
     try {
         const { title , content , url } = req.body;
         if (!title) {
@@ -78,6 +78,7 @@ router.post('/post' , storage.none(), async (req, res) => {
                 content : content,
                 img : url
             })
+            console.log(post)
             return res.json(post);
         }
     } catch(error) {

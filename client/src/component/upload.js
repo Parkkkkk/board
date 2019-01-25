@@ -34,7 +34,6 @@ class Image extends Component {
                     onChange={this.onChange}
                     accept="image/*">
                     </input>
-                    <input type="submit"></input>
                 </form>
             </div>
         )
