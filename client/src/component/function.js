@@ -34,15 +34,6 @@ export const Create_post = post_info => {
 )
 }
 
-export const Image_upload = fd => {
-    return (axios('user/img' , {
-        method : 'POST',
-        data : fd
-    })
-    .then(res => console.log(res))
-)
-}
-
 export const Delete_post = () => {
     return (axios('user/:id'))
 }

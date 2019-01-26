@@ -1,6 +1,6 @@
 import React , {Component} from 'react'
 import { Create_post } from './function'
-import Image from './upload'
+
 
 //Create Post 
 
@@ -10,27 +10,30 @@ class Post extends Component {
         this.state ={
             title : "",
             content : "",
-            url : ""
+            img : ""
         }
         this.Change = this.Change.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-    }
+        this.Image_Change = this.Image_Change.bind(this);
+      }
 
     Change (e) {
         this.setState({ [e.target.name] : e.target.value});
     }
 
+    Image_Change (e) {
+        this.setState({ img : e.target.files[0]});
+    }
+
     onSubmit (e) {
         e.preventDefault()
 
-
-        var post_info = {
-            title : this.state.title,
-            content : this.state.content,
-            url : ""
-        }
-
-        Create_post(post_info)
+        const fd = new FormData();
+        fd.append('title' , this.state.title)
+        fd.append('content' , this.state.content)
+        fd.append('img', this.state.img , this.state.img.name)
+      
+        Create_post(fd)
         .then(res=>console.log(res))
     }
 
@@ -59,7 +62,15 @@ class Post extends Component {
                         placeholder="내용을 입력하세요"
                         maxLength='140'></textarea>
                     </div>
-                    <Image />
+                    
+                    <div className="post-group">
+                        <input className="image" 
+                        type="file"
+                        onChange={this.Image_Change}
+                        accept="image/*">
+                        </input>
+                    </div>
+
                 <button type="submit">게시</button>
                 </form>
             </div>

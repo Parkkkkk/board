@@ -65,9 +65,10 @@ router.get('/click/:id' , async (req, res) => {
 
 //post 
 //include image url
-router.post('/post' ,storage.none(), async (req, res) => {
+router.post('/post' ,storage.single('img'), async (req, res) => {
     try {
-        const { title , content , url } = req.body;
+        console.log(req.file)
+        const { title , content } = req.body;
         if (!title) {
             return res.send({ code : 400 , message : '제목을 입력해주세요'})
         } else if (!content) {
@@ -76,9 +77,8 @@ router.post('/post' ,storage.none(), async (req, res) => {
             const post = await Post.create({ 
                 title : title,
                 content : content,
-                img : url
+                img : `/img/${req.file.filename}`
             })
-            console.log(post)
             return res.json(post);
         }
     } catch(error) {

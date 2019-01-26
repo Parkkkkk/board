@@ -12,7 +12,7 @@ sequelize.sync();
 app.set('port' ,process.env.PORT || 3030)
 
 
-app.use('/img', express.static(path.join(__dirname, 'uploads')));
+app.use('/post', express.static(path.join(__dirname, 'uploads')));
 app.use(cookieparser());
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
