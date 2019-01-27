@@ -23,7 +23,7 @@ class PostList extends Component {
                             {this.state.data.map(datas => 
                             <tr align="center">
                             <td width="50">{datas.id}</td>
-                            <td width="300"><Link to ="/11">{datas.title}</Link></td>
+                            <td width="300">{datas.title}</td>
                             </tr>
                             )}
                     </tbody>
@@ -34,4 +34,4 @@ class PostList extends Component {
 }
 
 
-export default withRouter(PostList)
+export default PostList
