@@ -42,7 +42,7 @@ router.post('/img' , storage.single('img'), (req, res) => {
 //title => link
 router.get('/postlist' , async (req, res) => {
     try {
-        const list = await Post.findAll({ attributes: ['id','title'] })
+        const list = await Post.findAll({ attributes: ['id','title', 'userId'] })
         return res.send(list);
     } catch(error) {
         console.log(error);
@@ -51,8 +51,9 @@ router.get('/postlist' , async (req, res) => {
 
 
 //title click => get content
-router.get('/click/:id' , async (req, res) => {
+router.get('/:id' , async (req, res) => {
     try{
+        console.log(req.params.id)
         const content = await Post.findOne({ 
               where : { id : req.params.id },
                   attributes : ['title', 'content', 'img']
@@ -65,7 +66,7 @@ router.get('/click/:id' , async (req, res) => {
 
 //post 
 //include image url
-router.post('/post' ,storage.single('img'), async (req, res) => {
+router.post('/' ,storage.single('img'), async (req, res) => {
     try {
         console.log(req.file)
         const { title , content } = req.body;
@@ -77,7 +78,8 @@ router.post('/post' ,storage.single('img'), async (req, res) => {
             const post = await Post.create({ 
                 title : title,
                 content : content,
-                img : `/img/${req.file.filename}`
+                img : `/img/${req.file.filename}`,
+                userId : req.body.userId
             })
             return res.json(post);
         }

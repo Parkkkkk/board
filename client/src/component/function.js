@@ -26,7 +26,7 @@ export const User_join = user_info => {
 }
 
 export const Create_post = post_info => {
-    return (axios('user/post', {
+    return (axios('post/', {
         method : 'POST',
         data : post_info
     })
@@ -35,13 +35,14 @@ export const Create_post = post_info => {
 }
 
 export const Delete_post = () => {
-    return (axios('user/:id'))
+    return (axios('post/:id'))
 }
 
-export const Click_list = () => {
-    return (axios('user/postlist'))
+export const select_post = (id) => {
+    return (axios.get('/post' , {
+        params : { id : id }
+    }))
 }
 
-export const Veiew_post = () => {
-    return (axios('user/'))
-}
+export const View_post = () => {
+    return (axios.get('post/postlist'))}

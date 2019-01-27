@@ -1,7 +1,7 @@
 const express = require('express')
 const cookieparser = require('cookie-parser')
 const AuthRouter = require('./routes/auth')
-const PostRouter = require('./routes/post')
+const PostRouter = require('./routes/edit')
 const path = require('path')
 const { sequelize } = require('./models')
 
@@ -17,7 +17,7 @@ app.use(cookieparser());
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
 app.use('/auth' , AuthRouter);
-app.use('/user' , PostRouter);
+app.use('/post' , PostRouter);
 
 
 
