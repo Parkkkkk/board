@@ -1,6 +1,7 @@
 import React , { Component } from 'react'
 import {View_post} from './function'
-import { Link ,withRouter } from 'react-router-dom'
+import { Route , Link } from 'react-router-dom'
+import Post_info from './Postinfo'
 
 class PostList extends Component {
     constructor() {
@@ -9,25 +10,21 @@ class PostList extends Component {
             data : []
         }
        }
+
     componentDidMount () {
         View_post()
        .then(res => {this.setState({ data : res.data })})
     }
-
    
     render () {
         return (
             <div className="post-list">
-                <table border="1">
-                    <tbody> 
-                            {this.state.data.map(datas => 
-                            <tr align="center">
-                            <td width="50">{datas.id}</td>
-                            <td width="300">{datas.title}</td>
-                            </tr>
-                            )}
-                    </tbody>
-                </table>
+                        {this.state.data.map(datas => 
+                        <div>
+                            <Link to={`/${datas.id}`}>{datas.title}</Link>
+                        </div>
+                        )}
+                        <Route path='/:id' component={Post_info} />
             </div>
         )
     }
