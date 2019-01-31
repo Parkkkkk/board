@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router , Route } from 'react-router-dom'
-import PostList from './component/postlist'
-import Join from './component/join'
-import Login from './component/login'
-import Sidebar from './component/sidebar'
+import { PostList,
+Login,
+Join,
+Sidebar} from './component/index'
 
 class App extends Component {
   render() {
