@@ -20,7 +20,7 @@ class PostList extends Component {
             <div className="post-list">
                         {this.state.data.map(datas => 
                         <div>
-                            <Link to={`/${datas.id}`}>{datas.title}</Link>
+                            <Link to={`/postlist/${datas.id}`}>{datas.title}</Link>
                         </div>
                         )}
             </div>

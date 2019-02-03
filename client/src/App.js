@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router , Route } from 'react-router-dom'
+import {BrowserRouter as  Router , Route  } from 'react-router-dom'
 import { 
 PostList,
 Login,
@@ -12,10 +12,10 @@ class App extends Component {
     return (
       <Router >
                 <div className="App">
-                  <Sidebar />
                     <div className="container">
-                      <Route exact path="/" component={PostList}></Route>
-                      <Route exact path="/:id" component={Post_info}></Route>
+                      <Sidebar />
+                      <Route exact path="/postlist" component={PostList}></Route>
+                      <Route path="/postlist/:id" component={Post_info}></Route>
                       <Route path="/login" component={Login}></Route>
                       <Route path="/join" component={Join}></Route>
                     </div> 

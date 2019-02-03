@@ -10,6 +10,8 @@ export const User_login = user => {
         if(res.data.code === 400) {
             console.log(res.data.message);
         } else {
+            localStorage.setItem('useremail', res.data.email)
+            localStorage.setItem('nick' , res.data.nick)
             console.log(`${res.data.nick}님 환영합니다.`)
         }
     })
