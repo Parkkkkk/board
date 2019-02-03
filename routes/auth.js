@@ -49,6 +49,15 @@ router.post('/login' , async (req, res) => {
     }
 })
 
+router.get('/state' , ( req, res ) => {
+    let cookie = "false"
+    if (req.cookies.useremail) {
+        cookie = 'true'
+        return res.send(cookie)
+    } else {
+        return res.send(cookie)
+    }
+})
 
 
 module.exports = router

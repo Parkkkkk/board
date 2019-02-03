@@ -8,18 +8,16 @@ class Post_info extends Component {
         content : ""
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (parseInt(nextProps.match.params.id, 10) !== parseInt(this.props.match.params.id, 10)) {
-          select_post(nextProps.match.params.id)
-          .then( res => {this.setState({ title : res.data.title , content : res.data.content})})
-          }
-      }
-
+    componentDidMount () {
+        select_post(this.props.match.params.id)
+        .then( res => {this.setState({ title : res.data.title , content : res.data.content})}) 
+    }
+    
     render() {
         return (
             <div>
-                <div>{this.state.title}</div>                
-                <div>{this.state.content}</div>
+                <div>title : {this.state.title}</div>                
+                <div>content : {this.state.content}</div>
             </div>
         )
     }

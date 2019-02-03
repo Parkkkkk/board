@@ -8,9 +8,9 @@ export const User_login = user => {
     }))
     .then(res => {
         if(res.data.code === 400) {
-            alert(res.data.message);
+            console.log(res.data.message);
         } else {
-            alert(`${res.data.nick}님 환영합니다.`)
+            console.log(`${res.data.nick}님 환영합니다.`)
         }
     })
 
@@ -34,15 +34,18 @@ export const Create_post = post_info => {
 )
 }
 
-export const Delete_post = () => {
-    return (axios('post/:id'))
+export const cookie = () => {
+    return (axios.get('auth/state'))
 }
 
+
+
 export const select_post = (id) => {
-    return (axios.get('/post' , {
-        params : { id : id }
-    }))
-}
+    return (axios.get(`/post/${id}`))}
 
 export const View_post = () => {
     return (axios.get('post/postlist'))}
+
+export const Delete_post = () => {
+    return (axios('post/:id'))
+}

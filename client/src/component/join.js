@@ -27,6 +27,7 @@ class Join extends Component {
         }
 
         User_join(join_info)
+        .then(res => {this.props.history.push('/login')})
     }
 
 

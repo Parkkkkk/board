@@ -34,7 +34,7 @@ class Post extends Component {
         fd.append('img', this.state.img , this.state.img.name)
       
         Create_post(fd)
-        .then(res=>console.log(res))
+        .then(res => {this.props.history.push('/')})
     }
 
 

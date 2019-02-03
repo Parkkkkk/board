@@ -27,6 +27,7 @@ class Login extends Component {
         }
         
         User_login(Login_info) 
+        .then(res => {this.props.history.push('/')})
     }
 
 

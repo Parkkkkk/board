@@ -1,7 +1,6 @@
 import React , { Component } from 'react'
 import {View_post} from './function'
-import { Route , Link } from 'react-router-dom'
-import Post_info from './Postinfo'
+import { Link } from 'react-router-dom'
 
 class PostList extends Component {
     constructor() {
@@ -24,7 +23,6 @@ class PostList extends Component {
                             <Link to={`/${datas.id}`}>{datas.title}</Link>
                         </div>
                         )}
-                        <Route path='/:id' component={Post_info} />
             </div>
         )
     }
