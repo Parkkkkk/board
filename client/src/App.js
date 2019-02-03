@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as  Router , Route  } from 'react-router-dom'
 import { 
+profile,
 PostList,
 Login,
 Join,
@@ -16,6 +17,7 @@ class App extends Component {
                       <Sidebar />
                       <Route exact path="/postlist" component={PostList}></Route>
                       <Route path="/postlist/:id" component={Post_info}></Route>
+                      <Route path="/profile" component={profile}></Route>
                       <Route path="/login" component={Login}></Route>
                       <Route path="/join" component={Join}></Route>
                     </div> 

@@ -3,12 +3,9 @@ import {View_post} from './function'
 import { Link } from 'react-router-dom'
 
 class PostList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            data : []
-        }
-       }
+    state = {
+        data : []
+    }
 
     componentDidMount () {
         View_post()

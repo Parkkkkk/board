@@ -3,6 +3,12 @@ import { NavLink , withRouter } from 'react-router-dom'
 import './sidebar.css'
 
 class Sidebar extends Component {
+    logOut = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('useremail')
+        localStorage.removeItem('nick')
+        this.props.history.push('/')
+    }
 
     render() {
         const  Notlogin= (
@@ -16,12 +22,12 @@ class Sidebar extends Component {
             <div className="sidebar"> 
                 <NavLink exact to ="/postlist" className="home">Home</NavLink>
                 <NavLink to ="/profile" className="profile">Profile</NavLink>
-                <NavLink to="/logout" className="logout">logout</NavLink>     
+                <NavLink to="/logout" className="logout" onClick={this.logOut}>logout</NavLink>     
             </div>
         )
         return (
             <div className="nav-container">
-                { localStorage.getItem('useremail') ? login : Notlogin}
+                { localStorage.useremail ? login : Notlogin}
             </div>
         )
     }
