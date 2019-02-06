@@ -3,22 +3,17 @@ import { User_login } from './function'
 
 
 class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
+        state = {
             email : "",
             password : ""
         }
+    
 
-        this.Change = this.Change.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-
-    Change(e) {
+    Change = (e) => {
         this.setState({ [e.target.name] : e.target.value})
     }
 
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
 
         var Login_info = {

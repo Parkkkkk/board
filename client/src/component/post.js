@@ -5,27 +5,21 @@ import { Create_post } from './function'
 //Create Post 
 
 class Post extends Component {
-    constructor() {
-        super();
-        this.state ={
+        state ={
             title : "",
             content : "",
             img : ""
         }
-        this.Change = this.Change.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.Image_Change = this.Image_Change.bind(this);
-      }
-
-    Change (e) {
+        
+    Change = (e) => {
         this.setState({ [e.target.name] : e.target.value});
     }
 
-    Image_Change (e) {
+    Image_Change = (e) => {
         this.setState({ img : e.target.files[0]});
     }
 
-    onSubmit (e) {
+    onSubmit = (e) => {
         e.preventDefault()
 
         const fd = new FormData();

@@ -2,23 +2,20 @@ import React,{Component} from 'react'
 import {User_join} from './function'
 
 class Join extends Component {
-    constructor() {
-        super();
-        this.state = {
+    
+        state = {
             email : "",
             password : "",
             nick : "",
         }
-        this.Change = this.Change.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
+        
 
-    Change(e) {
+    Change = (e) => {
         this.setState({ [e.target.name] : e.target.value });
     }
 
-    onSubmit (event) {
-        event.preventDefault()
+    onSubmit = (e) => {
+        e.preventDefault()
 
         var join_info = {
             email : this.state.email,
