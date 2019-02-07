@@ -6,6 +6,7 @@ PostList,
 Login,
 Join,
 Post_info,
+Post,
 Sidebar} from './component/index'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                       <Sidebar />
                       <Route exact path="/postlist" component={PostList}></Route>
                       <Route path="/postlist/:id" component={Post_info}></Route>
+                      <Route path="/newpost" component={Post}></Route>
                       <Route path="/profile" component={profile}></Route>
                       <Route path="/login" component={Login}></Route>
                       <Route path="/join" component={Join}></Route>

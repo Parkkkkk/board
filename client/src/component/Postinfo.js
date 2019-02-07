@@ -5,12 +5,13 @@ import { select_post } from './function'
 class Post_info extends Component {
     state = {
         title : "",
-        content : ""
+        content : "",
+        img : ""
     }
 
     componentDidMount () {
         select_post(this.props.match.params.id)
-        .then( res => {this.setState({ title : res.data.title , content : res.data.content})}) 
+        .then( res => {this.setState({ title : res.data.title , content : res.data.content , img : res.data.img})}) 
     }
     
     render() {
@@ -18,6 +19,7 @@ class Post_info extends Component {
             <div>
                 <div>title : {this.state.title}</div>                
                 <div>content : {this.state.content}</div>
+                <img src={this.state.img} ></img>
             </div>
         )
     }

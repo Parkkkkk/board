@@ -20,6 +20,7 @@ class PostList extends Component {
                             <Link to={`/postlist/${datas.id}`}>{datas.title}</Link>
                         </div>
                         )}
+                        <button><Link to="/newpost">작성</Link></button>
             </div>
         )
     }
