@@ -26,6 +26,7 @@ class Post extends Component {
         fd.append('title' , this.state.title)
         fd.append('content' , this.state.content)
         fd.append('img', this.state.img , this.state.img.name)
+        fd.append('userId', localStorage.nick)
       
         Create_post(fd)
         .then(res => {this.props.history.push('/')})

@@ -9,18 +9,18 @@ class PostList extends Component {
 
     componentDidMount () {
         View_post()
-       .then(res => {this.setState({ data : res.data })})
+        .then(res => {this.setState({ data : res.data })})
     }
-   
+
     render () {
         return (
             <div className="post-list">
-                        {this.state.data.map(datas => 
-                        <div>
-                            <Link to={`/postlist/${datas.id}`}>{datas.title}</Link>
-                        </div>
-                        )}
-                        <button><Link to="/newpost">작성</Link></button>
+                {this.state.data.map(datas => 
+                <div>
+                    <Link to={`/postlist/${datas.id}`}>{datas.title}</Link>
+                </div>
+                )}               
+                <button><Link to="/newpost">작성</Link></button> 
             </div>
         )
     }

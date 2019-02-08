@@ -13,15 +13,16 @@ class Sidebar extends Component {
     render() {
         const  Notlogin= (
             <div className="sidebar">
-                <NavLink exact to ="/postlist" className="home">Home</NavLink>
+                <NavLink exact to ="/" className="home">Home</NavLink>
                 <NavLink to ="/login" className="login">Login</NavLink>
                 <NavLink to="/join" className="join">Join</NavLink>     
             </div>
         )
         const login = (
             <div className="sidebar"> 
-                <NavLink exact to ="/postlist" className="home">Home</NavLink>
-                <NavLink to ="/profile" className="profile">Profile</NavLink>
+                <NavLink exact to ="/" className="home">Home</NavLink>
+                <NavLink to="/postlist" className="post">Post</NavLink>
+                <NavLink to="/profile" className="profile">Profile</NavLink>
                 <NavLink to="/logout" className="logout" onClick={this.logOut}>logout</NavLink>     
             </div>
         )

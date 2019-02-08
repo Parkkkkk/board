@@ -78,7 +78,7 @@ router.post('/' ,storage.single('img'), async (req, res) => {
             const post = await Post.create({ 
                 title : title,
                 content : content,
-                img : `/img/${req.file.filename}`,
+                img : `/img/${req.file.filename}` | null,
                 userId : req.body.userId
             })
             return res.json(post);
