@@ -36,18 +36,16 @@ export const Create_post = post_info => {
 )
 }
 
-export const cookie = () => {
-    return (axios.get('auth/state'))
-}
-
-
-
 export const select_post = (id) => {
     return (axios.get(`/post/${id}`))}
 
 export const View_post = () => {
     return (axios.get('post/postlist'))}
 
-export const Delete_post = () => {
-    return (axios('post/:id'))
+export const Delete_post = (id) => {
+    return (axios.delete(`/post/${id}`).then(res => console.log(res)))
+}
+
+export const Put_post = (id) => {
+    return (axios.put(`/post/${id}`).then(res => console.log(res)))
 }

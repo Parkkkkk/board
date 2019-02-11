@@ -92,7 +92,22 @@ router.post('/' ,storage.single('img'), async (req, res) => {
 router.delete('/:id' , async (req, res) => {
     try {
         await Post.destroy({ where : { id : req.params.id }});
-        return res.send('삭제되었습니다.')
+        return res.send({ message : '삭제 되었습니다.'})
+    } catch(error) {
+        return res.send(error);
+    }
+})
+
+router.put('/:id' , async (req, res) => {
+    try {
+        const { title , content } = req.body;
+        await Post.update({
+            title,
+            content
+        },{ 
+            where : { id : req.param.id }
+          });
+        return res.send({ message : '수정 되었습니다'});
     } catch(error) {
         return res.send(error);
     }
