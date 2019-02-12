@@ -36,6 +36,12 @@ export const Create_post = post_info => {
 )
 }
 
+export const Put_post = (data) => {
+    return (axios(`/post/${data.id}` , {
+        method : 'PUT',
+        data : data
+    }))}
+
 export const select_post = (id) => {
     return (axios.get(`/post/${id}`))}
 
@@ -44,8 +50,4 @@ export const View_post = () => {
 
 export const Delete_post = (id) => {
     return (axios.delete(`/post/${id}`).then(res => console.log(res)))
-}
-
-export const Put_post = (id) => {
-    return (axios.put(`/post/${id}`).then(res => console.log(res)))
 }
