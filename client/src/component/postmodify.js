@@ -1,14 +1,18 @@
 import React , { Component } from 'react'
-import { Delete_post } from './function'
+import { Put_post } from './function'
 
 class PostMo extends Component {
 
-    state = {
-        title : "",
-        content : "",
-        img : "",
-    };
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            title : this.props.title,
+            content : this.props.content
+        }
+        this._onChang = this._onChang.bind(this);
+        this._onClick = this._onClick.bind(this);
+        this.backpage = this.backpage.bind(this);
+    }
 
     _onChang = (e) => {
         this.setState({ [e.target.name] : e.target.value});
@@ -20,10 +24,10 @@ class PostMo extends Component {
         let data = {
             title : this.state.title,
             content : this.state.content,
-            id : this.props.match.params.id
+            id : this.props.id
         }
 
-        Delete_post(data)
+        Put_post(data)
         .then(res => {this.props.history.push('/postlist')})
     }
 
@@ -31,7 +35,7 @@ class PostMo extends Component {
 
 
     render() {
-        return (
+      return (
             <div>
                 <div className="post-group">
                 <label>제목 : </label>
@@ -40,7 +44,7 @@ class PostMo extends Component {
                 value={this.state.title}
                 onChange={this._onChang}
                 placeholder="제목을 입력하세요"
-                type="text">{this.props.title}                            
+                type="text">                          
                 </input>
             </div>
 
@@ -51,7 +55,7 @@ class PostMo extends Component {
                 value={this.state.content}
                 onChange={this._onChang}
                 placeholder="내용을 입력하세요"
-                maxLength='140'>{this.props.content}
+                maxLength='140'>
                 </textarea>
             </div>
             
@@ -59,7 +63,7 @@ class PostMo extends Component {
                 <input className="image" 
                 type="file"
                 onChange={this.Image_Change}
-                accept="image/*">{this.props.img}
+                accept="image/*">
                 </input>
             </div>
             <button onClick={this._onClick}>확인</button>

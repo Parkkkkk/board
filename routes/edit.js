@@ -101,12 +101,12 @@ router.put('/:id' , async (req, res) => {
     try {
         const { title , content } = req.body;
         await Post.update({
-            title,
-            content
+            title : title,
+            content : content
         },{ 
-            where : { id : req.param.id }
+            where : { id : req.params.id }
           });
-        return res.send({ message : '수정 되었습니다'});
+        return res.send({ message : '수정 되었습니다.'});
     } catch(error) {
         return res.send(error);
     }

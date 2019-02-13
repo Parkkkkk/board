@@ -1,6 +1,6 @@
 import React , { Component }from 'react'
 import { Link } from 'react-router-dom'
-import { select_post ,Delete_post } from './function'
+import { select_post, Delete_post } from './function'
 
 
 class Post_info extends Component {
@@ -24,6 +24,7 @@ class Post_info extends Component {
     }
 
 
+
     render() {
         return ( 
             <div>
@@ -31,7 +32,7 @@ class Post_info extends Component {
                 <div>내용 : {this.state.content}</div>
                 <img src={this.state.img} ></img>
                 <button onClick={this._depost}>삭제</button>
-                <button><Link to={`/post/edit`}>수정</Link></button>
+                <button><Link to="/post/edit" >수정</Link></button>
             </div>
             )
     }
