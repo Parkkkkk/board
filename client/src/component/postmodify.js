@@ -3,15 +3,8 @@ import { Put_post } from './function'
 
 class PostMo extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            title : this.props.title,
-            content : this.props.content
-        }
-        this._onChang = this._onChang.bind(this);
-        this._onClick = this._onClick.bind(this);
-        this.backpage = this.backpage.bind(this);
+    state = {
+
     }
 
     _onChang = (e) => {

@@ -100,13 +100,13 @@ router.delete('/:id' , async (req, res) => {
 router.put('/:id' , async (req, res) => {
     try {
         const { title , content } = req.body;
-        await Post.update({
+        const data = await Post.update({
             title : title,
             content : content
         },{ 
             where : { id : req.params.id }
           });
-        return res.send({ message : '수정 되었습니다.'});
+        return res.send(data);
     } catch(error) {
         return res.send(error);
     }
