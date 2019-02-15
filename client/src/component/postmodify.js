@@ -1,10 +1,12 @@
 import React , { Component } from 'react'
 import { Put_post } from './function'
 
-class PostMo extends Component {
+class UPOST extends Component {
 
     state = {
-
+        title : "",
+        content : "",
+        id : ""
     }
 
     _onChang = (e) => {
@@ -34,7 +36,7 @@ class PostMo extends Component {
                 <label>제목 : </label>
                 <input className="title"
                 name="title"
-                value={this.state.title}
+                value={this.props.title}
                 onChange={this._onChang}
                 placeholder="제목을 입력하세요"
                 type="text">                          
@@ -45,7 +47,7 @@ class PostMo extends Component {
                 <label>내용 : </label>
                 <textarea className="content"
                 name='content'
-                value={this.state.content}
+                value={this.props.content}
                 onChange={this._onChang}
                 placeholder="내용을 입력하세요"
                 maxLength='140'>
@@ -66,4 +68,4 @@ class PostMo extends Component {
     }
 }
 
-export default PostMo
+export default UPOST

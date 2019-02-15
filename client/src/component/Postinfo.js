@@ -1,11 +1,10 @@
 import React , { Component }from 'react'
-import { Link } from 'react-router-dom'
 import { select_post, Delete_post } from './function'
-import PostMo from './postmodify';
+import UPOST from './postmodify'
 
-
-class Post_info extends Component {
+class SPOST extends Component {
     state = {
+        nav : true,
         title : "",
         content : "",
         img : "",
@@ -14,31 +13,52 @@ class Post_info extends Component {
 
     componentDidMount () {
         select_post(this.state.id)
-        .then( res => {this.setState(
-            { title : res.data.title ,
-              content : res.data.content ,
-              img : res.data.img })}) 
+        .then( res => {this.setState({ 
+                title : res.data.title,
+                content : res.data.content,
+                img : res.data.img,
+                nav : true })}
+        )
     }
 
-    _depost = (e) => {
-        e.preventDefault();
 
 
+    // nav true or false => true => render post list 
+    //                      false => render updata post
+
+    _depost = () => {
         Delete_post(this.state.id)
         .then( res => {this.props.history.push('/postlist')})
     }
 
 
+    Post_nav = () => {
+        this.setState({ nav : false })                 
+    }
 
+    U_POST = () => {
+        return <UPOST 
+        title = {this.state.title} 
+        content = {this.state.content} 
+        id = {this.state.id} />
+    }
 
+    S_POST = () => (
+        <div>
+            <div>제목 : {this.state.title}</div>                
+            <div>내용 : {this.state.content}</div>
+            <img src={this.state.img} ></img>
+            <button onClick={this._depost}>삭제</button>
+            <button onClick={this.Post_nav}>수정</button>
+        </div>
+)
+
+    
     render() {
+        console.log(this.state.title)
         return ( 
             <div>
-                <div>제목 : {this.state.title}</div>                
-                <div>내용 : {this.state.content}</div>
-                <img src={this.state.img} ></img>
-                <button onClick={this._depost}>삭제</button>
-                <button><Link to={`/post/${datas.id}`}>수정</Link></button>
+                {this.state.nav ? this.S_POST() : this.U_POST() }
             </div>
             )
     }
@@ -46,4 +66,7 @@ class Post_info extends Component {
 
 }
 
-export default Post_info
+export default SPOST
+
+
+
