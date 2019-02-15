@@ -4,9 +4,9 @@ import { Put_post } from './function'
 class UPOST extends Component {
 
     state = {
-        title : "",
-        content : "",
-        id : ""
+        title : this.props.title,
+        content : this.props.content,
+        id : this.props.id
     }
 
     _onChang = (e) => {
@@ -36,7 +36,7 @@ class UPOST extends Component {
                 <label>제목 : </label>
                 <input className="title"
                 name="title"
-                value={this.props.title}
+                value={this.state.title}
                 onChange={this._onChang}
                 placeholder="제목을 입력하세요"
                 type="text">                          
@@ -47,7 +47,7 @@ class UPOST extends Component {
                 <label>내용 : </label>
                 <textarea className="content"
                 name='content'
-                value={this.props.content}
+                value={this.state.content}
                 onChange={this._onChang}
                 placeholder="내용을 입력하세요"
                 maxLength='140'>
