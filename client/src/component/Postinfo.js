@@ -33,7 +33,7 @@ class SPOST extends Component {
 
 
     Post_nav = () => {
-        this.setState({ nav : false })                 
+        this.setState({ nav : false })
     }
 
     U_POST = () => {
@@ -55,7 +55,6 @@ class SPOST extends Component {
 
     
     render() {
-        console.log(this.state.title)
         return ( 
             <div>
                 {this.state.nav ? this.S_POST() : this.U_POST() }

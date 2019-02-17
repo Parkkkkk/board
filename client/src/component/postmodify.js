@@ -1,13 +1,15 @@
 import React , { Component } from 'react'
 import { Put_post } from './function'
+import { withRouter } from 'react-router-dom'
 
 class UPOST extends Component {
-
-    state = {
+    
+    state ={
         title : this.props.title,
         content : this.props.content,
         id : this.props.id
     }
+    
 
     _onChang = (e) => {
         this.setState({ [e.target.name] : e.target.value});
@@ -19,7 +21,7 @@ class UPOST extends Component {
         let data = {
             title : this.state.title,
             content : this.state.content,
-            id : this.props.id
+            id : this.state.id
         }
 
         Put_post(data)
@@ -68,4 +70,4 @@ class UPOST extends Component {
     }
 }
 
-export default UPOST
+export default withRouter(UPOST)

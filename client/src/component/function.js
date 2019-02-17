@@ -40,7 +40,9 @@ export const Put_post = (data) => {
     return (axios(`/post/${data.id}` , {
         method : 'PUT',
         data : data
-    }))}
+    })
+    .then(res => console.log(res))
+)}
 
 export const select_post = (id) => {
     return (axios.get(`/post/${id}`))}
