@@ -21,6 +21,6 @@ app.use('/post' , PostRouter);
 
 
 
-app.listen(app.get('port') , () => {
+const server = app.listen(app.get('port') , () => {
     console.log('success connection!')
 })
